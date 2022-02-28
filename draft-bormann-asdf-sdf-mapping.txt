@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 9 May 2022                                   Universität Bremen
-                                                         5 November 2021
+Expires: 1 September 2022                             Universität Bremen
+                                                        28 February 2022
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -26,12 +26,16 @@ Abstract
    application.  SDF mapping files provide a mechanism to represent this
    augmentation.
 
-Discussion Venues
+About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   Discussion of this document takes place on the asdf Working Group
-   mailing list (asdf@ietf.org), which is archived at
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-bormann-asdf-sdf-mapping/.
+
+   Discussion of this document takes place on the A Semantic Definition
+   Format for Data and Interactions of Things (asdf) Working Group
+   mailing list (mailto:asdf@ietf.org), which is archived at
    https://mailarchive.ietf.org/arch/browse/asdf/.
 
    Source for this draft and an issue tracker can be found at
@@ -52,11 +56,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 May 2022.
+   This Internet-Draft will expire on 1 September 2022.
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2022 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -358,9 +362,9 @@ Table of Contents
    [I-D.ietf-asdf-sdf]
               Koster, M. and C. Bormann, "Semantic Definition Format
               (SDF) for Data and Interactions of Things", Work in
-              Progress, Internet-Draft, draft-ietf-asdf-sdf-08, 25
-              October 2021, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-asdf-sdf-08>.
+              Progress, Internet-Draft, draft-ietf-asdf-sdf-10, 16
+              January 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-asdf-sdf-10>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -406,12 +410,10 @@ Authors' Addresses
    Postfach 330440
    D-28359 Bremen
    Germany
-
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
 
 
    Jan Romann
    Universität Bremen
-
    Email: jan.romann@uni-bremen.de
