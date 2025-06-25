@@ -520,7 +520,7 @@ Internet-Draft                 SDF Mapping                     June 2025
          "titles": {
            "en": "Lamp Thing Model",
            "de": "Thing Model für eine Lampe"
-         }
+         },
          "sdfProperty": {
            "status": {
              "description": "Current status of the lamp",
