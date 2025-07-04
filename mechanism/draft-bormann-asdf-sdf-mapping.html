@@ -1089,7 +1089,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </div>
 <div class="author">
       <div class="author-name">J. Romann</div>
-<div class="org">Hochschule Emden/Leer</div>
+<div class="org">Universität Bremen</div>
 </div>
 </dd>
 </dl>
@@ -1343,32 +1343,30 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-model-2-ecosystem-w" class="section-name selfRef">Example Model 2 (ecosystem: W3C WoT)</a>
         </h3>
 <p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
+(as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
 into an SDF model plus a mapping file to catch Thing Model attributes
-that don't currently have SDF qualities defined.
+that don't currently have SDF qualities defined (namely, <code>titles</code> and
+<code>descriptions</code> members used for internationalization).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">A second mapping file is more experimental in that it captures
+information that is actually instance-specific,
+in this case a <code>forms</code> member that binds the <code>status</code> property to an
+instance-specific CoAP resource.
 <span class="cref" id="td-note"><br>
-The example probably would be more useful with, say, protocol
-bindings.
-This is left for a future version of this example, and/or a
-future specification that specifically addresses how to map Thing
-Models into SDF.
-<br>
-(There is also the separate requirement to transform a Thing Description
-into the kind of information that can be represented in SDF plus
-instance information, such as IP addresses or specific node
-names.)
-<br>
-Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="pilcrow">¶</a></p>
+Namespaces are all wrong in this example.</span><a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-2.1">
-            <p id="section-2.2-2.1.1">The input: WoT Thing Model<a href="#section-2.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-4.1">
+            <p id="section-2.2-4.1.1">The input: WoT Thing Model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-input-wot-thing-model"></span><div id="code-wot-input">
 <figure id="figure-2">
-          <div class="lang-json sourcecode" id="section-2.2-3.1">
+          <div class="lang-json sourcecode" id="section-2.2-5.1">
 <pre>
 {
-    "@context": ["http://www.w3.org/ns/td"],
+    "@context": "https://www.w3.org/2022/wot/td/v1.1",
     "@type" : "tm:ThingModel",
     "title": "Lamp Thing Model",
     "titles": {
@@ -1383,7 +1381,12 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
               "de": "Aktueller Status der Lampe"
             },
             "type": "string",
-            "readOnly": true
+            "readOnly": true,
+            "forms": [
+              {
+                "href": "coap://example.org/status"
+              }
+            ]
         }
     }
 }
@@ -1394,13 +1397,13 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-4.1">
-            <p id="section-2.2-4.1.1">The output: SDF model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-6.1">
+            <p id="section-2.2-6.1.1">The output: SDF model<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-1-sdf-model"></span><div id="code-wot-output1">
 <figure id="figure-3">
-          <div class="lang-json sourcecode" id="section-2.2-5.1">
+          <div class="lang-json sourcecode" id="section-2.2-7.1">
 <pre>
 {
   "info": {
@@ -1430,13 +1433,13 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-6.1">
-            <p id="section-2.2-6.1.1">The other output: SDF mapping file<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-8.1">
+            <p id="section-2.2-8.1.1">The other output: SDF mapping file for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-2-sdf-mapping-file"></span><div id="code-wot-output2">
 <figure id="figure-4">
-          <div class="lang-json sourcecode" id="section-2.2-7.1">
+          <div class="lang-json sourcecode" id="section-2.2-9.1">
 <pre>
 {
   "info": {
@@ -1467,6 +1470,39 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
 <a href="#name-output-2-sdf-mapping-file" class="selfRef">Output 2: SDF Mapping File</a>
           </figcaption></figure>
 </div>
+<ul class="normal">
+<li class="normal" id="section-2.2-10.1">
+            <p id="section-2.2-10.1.1">A third output: SDF mapping file for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<span id="name-output-3-sdf-mapping-file-f"></span><div id="code-wot-output3">
+<figure id="figure-5">
+          <div class="lang-json sourcecode" id="section-2.2-11.1">
+<pre>
+{
+  "info": {
+    "title": "Lamp Thing Model: WoT TM Protocol Binding"
+  },
+  "namespace": {
+    "wot": "http://www.w3.org/ns/td"
+  },
+  "defaultNamespace": "wot",
+  "map": {
+    "#/sdfObject/LampThingModel/sdfProperty/status": {
+      "forms": [
+        {
+          "href": "coap://example.org/status"
+        }
+      ]
+    }
+  }
+}
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-output-3-sdf-mapping-file-f" class="selfRef">Output 3: SDF Mapping File for Protocol Bindings</a>
+          </figcaption></figure>
+</div>
 </section>
 </div>
 </section>
@@ -1483,9 +1519,9 @@ The mandatory fourth component, the "map", contains the mappings from
 an SDF name reference (usually a namespace and a JSON pointer) to a
 nested map providing a set of qualities to be merged in at the site
 identified in the name reference.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 5</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-of-sdf-mapp"></span><div id="mapping-cddl">
-<figure id="figure-5">
+<figure id="figure-6">
         <div class="breakable lang-cddl sourcecode" id="section-3-3.1">
 <pre>
 start = sdf-mapping
@@ -1556,7 +1592,7 @@ rfc3339z = '
 '
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-cddl-definition-of-sdf-mapp" class="selfRef">CDDL definition of SDF mapping file</a>
         </figcaption></figure>
 </div>
@@ -1577,12 +1613,12 @@ For this reason, the author of a mapping file needs to make sure that its conten
 Future versions of this document, however, may choose a different approach:
 One option would be changing the data structure used by the <code>map</code> quality to an array of objects to ensure a determnistic application order.
 A final decision in this regard will require more discussion and implementation experience, though.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 6</a>.
+<p id="section-4-4">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
 This is the result of applying the WoT-specific mapping file from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
 This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
 which requires some information that cannot be provided in an SDF model that only follows the base specification.<a href="#section-4-4" class="pilcrow">¶</a></p>
 <span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
-<figure id="figure-6">
+<figure id="figure-7">
         <div class="lang-json-from-yaml sourcecode" id="section-4-5.1">
 <pre>{
   "info": {
@@ -1615,7 +1651,7 @@ which requires some information that cannot be provided in an SDF model that onl
 }
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
 <a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
         </figcaption></figure>
 </div>
@@ -1807,8 +1843,12 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22
         </h3>
 <dl class="references">
 <dt id="RFC8576">[RFC8576]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Garcia-Morchon, O.</span>, <span class="refAuthor">Kumar, S.</span>, and <span class="refAuthor">M. Sethi</span>, <span class="refTitle">"Internet of Things (IoT) Security: State of the Art and Challenges"</span>, <span class="seriesInfo">RFC 8576</span>, <span class="seriesInfo">DOI 10.17487/RFC8576</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8576">https://www.rfc-editor.org/rfc/rfc8576</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.wot-thing-description11">[W3C.wot-thing-description11]</dt>
+      <dd>
+<span class="refTitle">"Web of Things (WoT) Thing Description 1.1"</span>, <span class="seriesInfo">W3C REC wot-thing-description11</span>, <span class="seriesInfo">W3C wot-thing-description11</span>, <span>&lt;<a href="https://www.w3.org/TR/wot-thing-description11/">https://www.w3.org/TR/wot-thing-description11/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1848,11 +1888,11 @@ Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="a
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Jan Romann</span></div>
-<div dir="auto" class="left"><span class="org">Hochschule Emden/Leer</span></div>
+<div dir="auto" class="left"><span class="org">Universität Bremen</span></div>
 <div dir="auto" class="left"><span class="country-name">Germany</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:jan.romann@hs-emden-leer.de" class="email">jan.romann@hs-emden-leer.de</a>
+<a href="mailto:jan.romann@uni-bremen.de" class="email">jan.romann@uni-bremen.de</a>
 </div>
 </address>
 </section>
