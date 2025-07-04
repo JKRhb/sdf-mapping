@@ -93,14 +93,14 @@ Table of Contents
      2.2.  Example Model 2 (ecosystem: W3C WoT)  . . . . . . . . . .   4
    3.  Formal Syntax of SDF mapping files  . . . . . . . . . . . . .   7
    4.  Augmentation Mechanism  . . . . . . . . . . . . . . . . . . .   9
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
-     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  11
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
+     5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  10
      5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  11
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  12
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  12
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  11
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  11
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  12
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  12
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
 
 
@@ -473,15 +473,23 @@ Internet-Draft                 SDF Mapping                     July 2025
    whether such a format is needed.
 
    An augmented SDF model is produced from two inputs: An SDF model and
-   a mapping file that is compatible with the SDF model in question,
-   i.e. every JSON pointer within the keys of the mapping file's map
-   object needs to point to a location that already exists within the
-   model.  To perform the augmentation, a processor needs to iterate
-   over all entries within the map object and apply the JSON merge-patch
-   algorithm [RFC7396] by using an entry's key as the Target argument
-   and the value as the Value that is applied.
+   a compatible mapping file, i.e. every JSON pointer within the keys of
+   the mapping file's map object points to a location that already
+   exists within the SDF model.  To perform the augmentation, a
+   processor needs to iterate over all entries within the map object and
+   apply the JSON merge-patch algorithm [RFC7396] by using an entry's
+   key as the Target argument and the value as the Value argument.
 
-   (TODO: May need additional information)
+   Note that, in contrast to an array, the entries of a JSON object are
+   considered unordered, which means that the sequence in which the map
+   entries are applied is implementation-dependent.  For this reason,
+   the author of a mapping file needs to make sure that its contents can
+   be applied independently of each other.  Future versions of this
+   document, however, may choose a different approach: One option would
+   be changing the data structure used by the map quality to an array of
+   objects to ensure a determnistic application order.  A final decision
+   in this regard will require more discussion and implementation
+   experience, though.
 
    An example for an augmented SDF model can be seen in Figure 6.  This
    is the result of applying the WoT-specific mapping file from Figure 4
@@ -489,14 +497,6 @@ Internet-Draft                 SDF Mapping                     July 2025
    step away from being converted to a WoT Thing Model or Thing
    Description, which requires some information that cannot be provided
    in an SDF model that only follows the base specification.
-
-
-
-
-
-
-
-
 
 
 
@@ -539,19 +539,19 @@ Internet-Draft                 SDF Mapping                     July 2025
       Figure 6: An SDF model that has been augmented with WoT-specific
                                 vocabulary.
 
-   The formal syntax of the augmented SDF model is shown in Figure 7.
-   This syntax serves as the basis for the respective validation steps
-   in the algorithm.
-
-   TODO
-
-             Figure 7: CDDL definition of augmented SDF models
-
-   Note, however, that parts of an ecosystem-specific vocaulary may in
-   fact be mappable to the SDF base vocabulary.  Therefore, during the
+   Note that parts of an ecosystem-specific vocabulary may in fact be
+   mappable to the SDF base vocabulary.  Therefore, during the
    specification of the mapping between SDF and an ecosystem it has to
    be carefully decided what kind of information can be mapped to SDF
    directly and which one requires the help of a mapping file.
+
+5.  IANA Considerations
+
+5.1.  Media Type
+
+   IANA is requested to add the following Media-Type to the "Media
+   Types" registry.
+
 
 
 
@@ -561,13 +561,6 @@ Bormann & Romann         Expires 5 January 2026                [Page 10]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
-
-5.  IANA Considerations
-
-5.1.  Media Type
-
-   IANA is requested to add the following Media-Type to the "Media
-   Types" registry.
 
    +==================+==============================+=============+
    | Name             | Template                     | Reference   |
@@ -607,17 +600,6 @@ Internet-Draft                 SDF Mapping                     July 2025
 
    (TBD: After any future additions, check if we need any.)
 
-
-
-
-
-
-
-Bormann & Romann         Expires 5 January 2026                [Page 11]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
 6.  Security Considerations
 
    Some wider issues are discussed in [RFC8576].
@@ -627,6 +609,14 @@ Internet-Draft                 SDF Mapping                     July 2025
 7.  References
 
 7.1.  Normative References
+
+
+
+
+Bormann & Romann         Expires 5 January 2026                [Page 11]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
    [BCP14]    Best Current Practice 14,
               <https://www.rfc-editor.org/info/bcp14>.
@@ -666,14 +656,6 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 7.2.  Informative References
 
-
-
-
-Bormann & Romann         Expires 5 January 2026                [Page 12]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
               Things (IoT) Security: State of the Art and Challenges",
               RFC 8576, DOI 10.17487/RFC8576, April 2019,
@@ -684,6 +666,13 @@ Acknowledgements
    This draft is based on discussions in the Thing-to-Thing Research
    Group (T2TRG) and the SDF working group.  Input for Section 2.1 was
    provided by Ari Keränen.
+
+
+
+Bormann & Romann         Expires 5 January 2026                [Page 12]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
 Authors' Addresses
 
@@ -700,6 +689,17 @@ Authors' Addresses
    Hochschule Emden/Leer
    Germany
    Email: jan.romann@hs-emden-leer.de
+
+
+
+
+
+
+
+
+
+
+
 
 
 
