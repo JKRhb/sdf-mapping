@@ -9,10 +9,12 @@
 <meta content="Jan Romann" name="author">
 <meta content="
        The Semantic Definition Format (SDF) is a format for domain experts to
-use in the creation and maintenance of data and interaction models in
-the Internet of Things.  It was created as a common language for use
+use in the creation and maintenance of data and interaction models
+that describe Things, i.e., physical objects that are available
+for interaction over a network.
+It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed. 
        An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -20,27 +22,23 @@ application.
 SDF mapping files provide a mechanism to represent this
 augmentation. 
     " name="description">
-<meta content="xml2rfc 3.12.3" name="generator">
+<meta content="xml2rfc 3.29.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-bormann-asdf-sdf-mapping-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.3
-    Python 3.9.7
-    appdirs 1.4.4
-    ConfigArgParse 1.3
-    google-i18n-address 2.5.0
-    html5lib 1.1
+  xml2rfc 3.29.0
+    Python 3.12.11
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 2.11.3
-    kitchen 1.2.6
-    lxml 4.6.5
-    MarkupSafe 2.0.1
-    pycountry 20.7.3
-    pyflakes 2.3.1
-    PyYAML 5.4.1
-    requests 2.26.0
-    setuptools 52.0.0
-    six 1.16.0
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.4
+    setuptools 80.9.0
+    wcwidth 0.2.13
 -->
 <link href="draft-bormann-asdf-sdf-mapping.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -166,29 +164,12 @@ augmentation.
   src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-  font-family: 'Cabin Condensed';
+  font-family: 'Lora';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -209,6 +190,77 @@ augmentation.
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light dark;
   --background-color: #fff;
@@ -221,6 +273,7 @@ augmentation.
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
   --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
   scrollbar-color: #bbb #eee;
 }
 body {
@@ -238,9 +291,15 @@ body {
 }
 
 /* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Condensed", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 680;
   margin: 0.8em 0 0.3em;
   font-size-adjust: 0.5;
   color: var(--title-color);
@@ -269,6 +328,7 @@ h4, h5, h6 {
 /* general structure */
 .author {
   padding-bottom: 0.3em;
+  vertical-align: top;
 }
 #abstract+p {
   font-size: 18px;
@@ -346,47 +406,68 @@ svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
 ol, ul {
   padding: 0;
   margin: 0 0 0.5em 2em;
-}
-ol ol, ul ul, ol ul, ul ol {
-  margin-left: 1em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
 }
 li {
   margin: 0 0 0.25em 0;
 }
-.ulCompact li {
-  margin: 0;
-}
 ul.empty, .ulEmpty {
   list-style-type: none;
+  & li {
+    margin-top: 0.5em;
+  }
 }
-ul.empty li, .ulEmpty li {
-  margin-top: 0.5em;
-}
-ul.compact, .ulCompact,
-ol.compact, .olCompact {
-  line-height: 100%;
+:is(ul, ol).compact, .ulCompact, .olCompact {
   margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
 }
 
 /* definition lists */
 dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
-  margin-right: 1em;
+  margin-right: 2ch;
+  min-width: 8ch;
 }
 dl > dd {
   margin-bottom: .8em;
-  min-height: 1.3em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
 }
-dl.compact > dd, .dlCompact > dd {
-  margin-bottom: 0em;
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
 }
-dl > dd > dl {
-  margin-top: 0.5em;
-  margin-bottom: 0em;
-}
-dd.break {
+:is(dd, span).break {
   display: none;
 }
 
@@ -394,11 +475,11 @@ dd.break {
 a, a[href].selfRef:hover {
   text-decoration: none;
 }
-a[href].selfRef {
-  color: var(--text-color);
-}
 a[href] {
   color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
 }
 a[href]:hover {
   text-decoration: underline;
@@ -406,7 +487,7 @@ a[href]:hover {
 a[href].selfRef:hover {
   background-color: var(--highlight-color);
 }
-a.xref {
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
   white-space: nowrap;
 }
 
@@ -418,8 +499,13 @@ tt, code, pre {
 tt, code {
   /* changing the font for inline elements leads to different ascender
      and descender heights; as we want to retain baseline alignment,
-     remove leading to avoid altering the final height of lines */
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
   line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
 }
 pre {
   border: 1px solid var(--line-color);
@@ -443,11 +529,29 @@ figcaption, caption {
   font-style: italic;
   margin: 0.5em 1.5em;
   text-align: left;
+  caption-side: bottom;
 }
 @media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
   pre, svg {
     display: inline-block;
-    overflow-x: auto;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
   }
   pre {
     max-width: 100%;
@@ -460,7 +564,7 @@ figcaption, caption {
     display: block;
     width: calc(100% - 25px);
   }
-  pre + .pilcrow, svg + .pilcrow {
+  :is(pre, svg) + .pilcrow {
     display: inline-block;
     vertical-align: text-bottom;
     padding-bottom: 8px;
@@ -484,6 +588,7 @@ cite {
 
 /* tables */
 table {
+  width: auto;
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
@@ -498,6 +603,16 @@ table.center {
 table.left {
   margin-right: auto;
 }
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
 thead, tbody {
   border: 1px solid var(--line-color);
 }
@@ -509,17 +624,11 @@ th, td {
 th {
   background-color: var(--line-color);
 }
-tr:nth-child(2n) > td {
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
   background-color: var(--background-color);
 }
-tr:nth-child(2n+1) > td {
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
   background-color: var(--highlight-color);
-}
-thead+tbody > tr:nth-child(2n) > td {
-  background-color: var(--highlight-color);
-}
-thead+tbody > tr:nth-child(2n+1) > td {
-  background-color: var(--background-color);
 }
 table caption {
   margin: 0;
@@ -534,9 +643,11 @@ a.pilcrow {
   margin-left: 3px;
   opacity: 0.2;
   user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
 }
-a.pilcrow[href] { color: var(--pilcrow-weak); }
-a.pilcrow[href]:hover { text-decoration: none; }
 @media not print {
   :hover > a.pilcrow {
     opacity: 1;
@@ -559,10 +670,15 @@ hr {
 }
 .bcp14 {
   font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
 }
-
 .role {
   font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
 }
 
 /* info block */
@@ -570,25 +686,29 @@ hr {
   margin: 0;
   font-size: var(--small-font-size);
   line-height: 18px;
-  --identifier-width: 8em;
-}
-#identifiers dt {
-  width: var(--identifier-width);
-  margin: 0;
-  clear: left;
-  float: left;
-  text-align: right;
-}
-#identifiers dd {
-  margin: 0 0 0 calc(1em + var(--identifier-width));
-  min-width: 5em;
-}
-#identifiers .authors .author {
-  display: inline-block;
-  margin-right: 1.5em;
-}
-#identifiers .authors .org {
-  font-style: italic;
+  --identifier-width: 15ch;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
 }
 
 /* The prepared/rendered info at the very bottom of the page */
@@ -599,9 +719,6 @@ hr {
   margin-top: 2em;
 }
 .docInfo .prepared {
-  float: left;
-}
-.docInfo .prepared {
   float: right;
 }
 
@@ -609,41 +726,48 @@ hr {
 #toc {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
-}
-#toc nav ul {
-  margin: 0 0.5em 0 0;
-  padding: 0;
-  list-style: none;
-}
-#toc nav li {
-  line-height: 1.3em;
-  margin: 0.75em 0;
-  padding-left: 1.2em;
-  text-indent: -1.2em;
-}
-#toc a.xref {
-  white-space: normal;
-}
-/* references */
-.references dt {
-  text-align: right;
-  font-weight: bold;
-  min-width: 7em;
-}
-.references dd {
-  margin-left: 8em;
-  overflow: auto;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
 }
 
-.refInstance {
-  margin-bottom: 1.25em;
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
 }
 
-.references .ascii {
-  margin-bottom: 0.25em;
-}
-
-/* index */
 #rfc\.index\.index + ul {
   margin-left: 0;
 }
@@ -651,21 +775,33 @@ hr {
 /* authors */
 address.vcard {
   font-style: normal;
-  margin: 1em 0;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
 }
-address.vcard .nameRole {
-  font-weight: 700;
-  margin-left: 0;
-}
-address.vcard .label {
-  margin: 0.5em 0;
-}
-address.vcard .type {
-  display: none;
-}
-.alternative-contact {
-  margin: 1.5em 0 1em;
-}
+
 hr.addr {
   border-top: 1px dashed;
   margin: 0;
@@ -687,6 +823,7 @@ hr.addr {
   }
 }
 
+/* Comments */
 .rfcEditorRemove p:first-of-type {
   font-style: italic;
 }
@@ -697,20 +834,41 @@ hr.addr {
 .crefSource {
   font-style: italic;
 }
-/* alternative layout for smaller screens */
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
 @media screen and (max-width: 929px) {
   #toc {
     position: fixed;
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc.active {
-      opacity: 1;
   }
   #toc h2 {
     margin: 0;
@@ -723,17 +881,17 @@ hr.addr {
     background-color: #444;
     color: white;
     cursor: pointer;
-  }
-  #toc h2::before { /* css hamburger */
-    float: right;
-    position: relative;
-    width: 1em;
-    height: 1px;
-    left: -164px;
-    margin: 8px 0 0 0;
-    background: white none repeat scroll 0 0;
-    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-    content: "";
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
   }
   #toc nav {
     display: none;
@@ -744,14 +902,13 @@ hr.addr {
     height: calc(100vh - 48px);
     border-left: 1px solid #ddd;
   }
-  #toc.active nav {
-    display: block;
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
   }
   /* Make the collapsed ToC header render white on gray also when it's a link */
   #toc h2 a,
-  #toc h2 a:link,
-  #toc h2 a:focus,
-  #toc h2 a:hover,
+  #toc h2 a:is(:link, :focus, :hover),
   #toc a.toplink,
   #toc a.toplink:hover {
     color: white;
@@ -759,11 +916,11 @@ hr.addr {
     text-decoration: none;
   }
   #toc a.toplink {
-    margin-top: 2px;
+    margin: 2px 0.5em 0;
   }
 }
 
-/* alternative layout for wide screens */
+/* TOC layout for wide screens */
 @media screen and (min-width: 930px) {
   body {
     padding-right: 360px;
@@ -792,20 +949,12 @@ hr.addr {
     overscroll-behavior: contain;
     scrollbar-width: thin;
   }
-  #toc nav > ul  {
-    margin-bottom: 2em;
-  }
-  #toc ul {
-    margin: 0 0 0 4px;
-    font-size: var(--small-font-size);
-  }
-  #toc ul p, #toc ul li {
-    margin: 2px 0;
-    line-height: 22px;
-  }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
   }
 }
 
@@ -828,16 +977,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -875,120 +1021,6 @@ hr.addr {
   padding-top: 20px;
 }
 
-/* Changes introduced to fix issues found during implementation */
-
-/* Separate body from document info even without intervening H1 */
-section {
-  clear: both;
-}
-
-/* Top align author divs, to avoid names without organization dropping level with org names */
-.author {
-  vertical-align: top;
-}
-
-/* Style section numbers with more space between number and title */
-.section-number {
-  padding-right: 0.5em;
-}
-
-/* Add styling for a link in the ToC that points to the top of the document */
-a.toplink {
-  float: right;
-  margin: 8px 0.5em 0;
-}
-
-/* Fix the dl styling to match the RFC 7992 attributes */
-dl > dt,
-dl.dlParallel > dt {
-  float: left;
-  margin-right: 1em;
-}
-dl.dlNewline > dt {
-  float: none;
-}
-
-/* Provide styling for table cell text alignment */
-table .text-left, table .text-left {
-  text-align: left;
-}
-table .text-center, table .text-center {
-  text-align: center;
-}
-table .text-right, table .text-right {
-  text-align: right;
-}
-
-/* Make the alternative author contact information look less like just another
-   author, and group it closer with the primary author contact information */
-.alternative-contact {
-  margin: 0.5em 0 0.25em 0;
-}
-address .non-ascii {
-  margin: 0 0 0 2em;
-}
-
-/* With it being possible to set tables with alignment
-  left, center, and right, { width: 100%; } does not make sense */
-table {
-  width: auto;
-}
-
-/* Avoid reference text that sits in a block with very wide left margin,
-   because of a long floating dt label.*/
-.references dd {
-  overflow: visible;
-}
-
-/* Control caption placement */
-caption {
-  caption-side: bottom;
-}
-
-/* Limit the width of the author address vcard, so names in right-to-left
-   script don't end up on the other side of the page. */
-
-address.vcard {
-  max-width: 20em;
-  margin-right: auto;
-}
-
-/* For address alignment dependent on LTR or RTL scripts */
-address div.left {
-  text-align: left;
-}
-address div.right {
-  text-align: right;
-}
-
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-/* Tweak the bcp14 keyword presentation */
-.bcp14 {
-  font-variant: small-caps;
-  font-weight: bold;
-  font-size: 0.9em;
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1002,33 +1034,34 @@ address div.right {
   --pilcrow-strong: #666;
   scrollbar-color: #777 #333;
 }
-/* Trick: a prefix match works because only black and white are allowed */
-svg [stroke="black"], svg [stroke^="#000"] {
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
   stroke: var(--text-color);
 }
-svg [stroke="white"], svg [stroke^="#fff"] {
+svg :is([stroke="white"], [stroke^="#fff"]) {
   stroke: var(--background-color);
 }
-svg [fill="black"], svg [fill^="#000"], svg :not([fill]) {
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
   fill: var(--text-color);
 }
-svg [stroke="fill"], svg [fill^="#fff"] {
+svg :is([fill="white"], [fill^="#fff"]) {
   fill: var(--background-color);
-}
 }
 </style>
 
 </head>
-<body>
+<body class="xml2rfc">
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SDF Mapping</td>
-<td class="right">February 2022</td>
+<td class="right">July 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 1 September 2022</td>
+<td class="center">Expires 5 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1041,12 +1074,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-bormann-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-02-28" class="published">28 February 2022</time>
+<time datetime="2025-07-04" class="published">4 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-01">1 September 2022</time></dd>
+<dd class="expires"><time datetime="2026-01-05">5 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1065,10 +1098,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">The Semantic Definition Format (SDF) is a format for domain experts to
-use in the creation and maintenance of data and interaction models in
-the Internet of Things.  It was created as a common language for use
+use in the creation and maintenance of data and interaction models
+that describe Things, i.e., physical objects that are available
+for interaction over a network.
+It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -1086,7 +1121,8 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
         A Semantic Definition Format for Data and Interactions of Things (asdf) Working Group mailing list (<span><a href="mailto:asdf@ietf.org">mailto:asdf@ietf.org</a></span>),
-        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/asdf/">https://mailarchive.ietf.org/arch/browse/asdf/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/asdf/">https://mailarchive.ietf.org/arch/browse/asdf/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/asdf/">https://www.ietf.org/mailman/listinfo/asdf/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
         <span><a href="https://github.com/cabo/sdf-mapping">https://github.com/cabo/sdf-mapping</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1109,7 +1145,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1118,7 +1154,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2022 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1139,57 +1175,57 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         </h2>
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
-                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-terminology-and-conventions" class="xref">Terminology and Conventions</a></p>
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology-and-conventions" class="internal xref">Terminology and Conventions</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-overview" class="xref">Overview</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-overview" class="internal xref">Overview</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-example-definition-1-ecosys" class="xref">Example Definition 1 (ecosystem: IPSO/OMA)</a></p>
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-example-model-1-ecosystem-i" class="internal xref">Example Model 1 (ecosystem: IPSO/OMA)</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-example-definition-2-ecosys" class="xref">Example Definition 2 (ecosystem: W3C WoT)</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-example-model-2-ecosystem-w" class="internal xref">Example Model 2 (ecosystem: W3C WoT)</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-formal-syntax-of-sdf-mappin" class="xref">Formal Syntax of SDF mapping files</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-formal-syntax-of-sdf-mappin" class="internal xref">Formal Syntax of SDF mapping files</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-media-type" class="xref">Media Type</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-media-type" class="internal xref">Media Type</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-registries" class="xref">Registries</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-registries" class="internal xref">Registries</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1201,10 +1237,12 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">The Semantic Definition Format (SDF) is a format for domain experts to
-use in the creation and maintenance of data and interaction models in
-the Internet of Things.  It was created as a common language for use
+use in the creation and maintenance of data and interaction models
+that describe Things, i.e., physical objects that are available
+for interaction over a network.
+It was created as a common language for use
 in the development of the One Data Model liaison organization (OneDM)
-definitions.  Tools convert this format to database formats and other
+models.  Tools convert this format to database formats and other
 serializations as needed.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">An SDF specification often needs to be augmented by additional
 information that is specific to its use in a particular ecosystem or
@@ -1216,12 +1254,12 @@ augmentation.<a href="#section-1-2" class="pilcrow">¶</a></p>
         <h3 id="name-terminology-and-conventions">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology-and-conventions" class="section-name selfRef">Terminology and Conventions</a>
         </h3>
-<p id="section-1.1-1">The definitions of <span>[<a href="#I-D.ietf-asdf-sdf" class="xref">I-D.ietf-asdf-sdf</a>]</span> apply.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">The definitions of <span>[<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> apply.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2">The term "byte" is used in its now-customary sense as a synonym for
 "octet".<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
-described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they
+described in <span>[<a href="#BCP14" class="cite xref">BCP14</a>]</span> (<a href="#RFC2119" class="auto internal xref">RFC2119</a>) (<a href="#RFC8174" class="auto internal xref">RFC8174</a>) when, and only when, they
 appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1233,39 +1271,41 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-overview" class="section-name selfRef">Overview</a>
       </h2>
 <p id="section-2-1">An SDF mapping file provides augmentation information for one or more
-SDF definitions.
-Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-10#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
+SDF models.
+Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">When processing the mapping file together with one or more SDF
-definitions, these qualities are added to the SDF definition at the
-referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="xref">RFC7396</a>]</span>.
-Note that this is somewhat similar to the way sdfRef (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-10#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
+models, these qualities are added to the SDF model at the
+referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
+Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div id="example1">
 <section id="section-2.1">
-        <h3 id="name-example-definition-1-ecosys">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-definition-1-ecosys" class="section-name selfRef">Example Definition 1 (ecosystem: IPSO/OMA)</a>
+        <h3 id="name-example-model-1-ecosystem-i">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-model-1-ecosystem-i" class="section-name selfRef">Example Model 1 (ecosystem: IPSO/OMA)</a>
         </h3>
-<p id="section-2.1-1">An example for an SDF mapping file is given in <a href="#code-example1" class="xref">Figure 1</a>.
+<p id="section-2.1-1">An example for an SDF mapping file is given in <a href="#code-example1" class="auto internal xref">Figure 1</a>.
 This mapping file is meant to attach to an SDF specification published
 by OneDM, and to add qualities relevant to the IPSO/OMA ecosystem.
 <span class="cref" id="namespace-note"><br>
 Note that this example uses namespaces to identify elements of the
 referenced specification(s), but has un-namespaced quality names.
-These two kinds of namespaces are probably unrelated, and we may
-need to add quality namespacing to SDF (independent of a potential
+These two kinds of namespaces are unrelated in SDF, and a more
+robust example may need to make use of Quality Name Prefixes
+as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
 feature to add namespace references to definitions that are not
-intended to go into the default namespace -- these are SDF
+intended to go into the default namespace — these are SDF
 definition namespaces and not quality namespaces, which are one
 meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.1-2.1">Start of mapping file for certain OneDM playground models:<a href="#section-2.1-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.1-2.1">
+            <p id="section-2.1-2.1.1">Start of a mapping file for certain OneDM playground models:<a href="#section-2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-a-simple-example-of-an-sdf-"></span><div id="code-example1">
 <figure id="figure-1">
-          <div id="section-2.1-3.1">
-<pre class="lang-json sourcecode">
+          <div class="lang-json sourcecode" id="section-2.1-3.1">
+<pre>
 {
   "info": {
     "title": "IPSO ID mapping"
@@ -1296,10 +1336,11 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </div>
 <div id="example2">
 <section id="section-2.2">
-        <h3 id="name-example-definition-2-ecosys">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-definition-2-ecosys" class="section-name selfRef">Example Definition 2 (ecosystem: W3C WoT)</a>
+        <h3 id="name-example-model-2-ecosystem-w">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-model-2-ecosystem-w" class="section-name selfRef">Example Model 2 (ecosystem: W3C WoT)</a>
         </h3>
-<p id="section-2.2-1">This example shows a the translation of a hypothetical W3C WoT Thing Model
+<p id="section-2.2-1">This example shows a translation of a hypothetical W3C WoT Thing Model
+(as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined.
 <span class="cref" id="td-note"><br>
@@ -1316,13 +1357,14 @@ names.)
 <br>
 Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-2.1">The input: WoT Thing Model<a href="#section-2.2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2-2.1">
+            <p id="section-2.2-2.1.1">The input: WoT Thing Model<a href="#section-2.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-input-wot-thing-model"></span><div id="code-wot-input">
 <figure id="figure-2">
-          <div id="section-2.2-3.1">
-<pre class="lang-json sourcecode">
+          <div class="lang-json sourcecode" id="section-2.2-3.1">
+<pre>
 {
     "@context": ["http://www.w3.org/ns/td"],
     "@type" : "tm:ThingModel",
@@ -1350,13 +1392,14 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-4.1">The output: SDF model<a href="#section-2.2-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2-4.1">
+            <p id="section-2.2-4.1.1">The output: SDF model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-1-sdf-model"></span><div id="code-wot-output1">
 <figure id="figure-3">
-          <div id="section-2.2-5.1">
-<pre class="lang-json sourcecode">
+          <div class="lang-json sourcecode" id="section-2.2-5.1">
+<pre>
 {
   "info": {
     "title": "Lamp Thing Model"
@@ -1385,13 +1428,14 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-6.1">The other output: SDF mapping file<a href="#section-2.2-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2-6.1">
+            <p id="section-2.2-6.1.1">The other output: SDF mapping file<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-2-sdf-mapping-file"></span><div id="code-wot-output2">
 <figure id="figure-4">
-          <div id="section-2.2-7.1">
-<pre class="lang-json sourcecode">
+          <div class="lang-json sourcecode" id="section-2.2-7.1">
+<pre>
 {
   "info": {
     "title": "Lamp Thing Model: WoT TM mapping"
@@ -1434,42 +1478,80 @@ Finally, namespaces are all wrong in this example.</span><a href="#section-2.2-1
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
 The mandatory fourth component, the "map", contains the mappings from
-a SDF name reference (usually a namespace and a JSON pointer) to a
+an SDF name reference (usually a namespace and a JSON pointer) to a
 nested map providing a set of qualities to be merged in at the site
 identified in the name reference.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2"><a href="#mapping-cddl" class="xref">Figure 5</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 5</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-of-sdf-mapp"></span><div id="mapping-cddl">
 <figure id="figure-5">
-        <div id="section-3-3.1">
-<pre class="lang-cddl sourcecode">
+        <div class="breakable lang-cddl sourcecode" id="section-3-3.1">
+<pre>
 start = sdf-mapping
 
 sdf-mapping = {
- ? info: sdfinfo                  ; This will be required in most process policies, but not a syntax error
+ ; info will be required in most process policies
+ ? info: sdfinfo
  ? namespace: named&lt;text&gt;
  ? defaultNamespace: text
- ? map: { * sdf-pointer =&gt; additionalqualities}
+ map: { * global-sdf-pointer =&gt; additionalqualities}
 }
 
 ; we can't really be much more specific here:
 additionalqualities = named&lt;any&gt;
 
-; --------------------------------- import from SDF:
+; --------------------------------- import from SDF-base:
 
 sdfinfo = {
  ? title: text
+ ? description: text
  ? version: text
  ? copyright: text
  ? license: text
+ ? modified: modified-date-time
+ ? features: [
+               * (any .feature "feature-name") ; EXTENSION-POINT
+             ]
+ optional-comment
  EXTENSION-POINT&lt;"info-ext"&gt;
 }
 
-; Shortcut for a map that gives names to instances of X (has text keys and values of type X)
+; Shortcut for a map that gives names to instances of X
+; (has keys of type text and values of type X)
 named&lt;X&gt; = { * text =&gt; X }
 
-EXTENSION-POINT&lt;f&gt; = ( * (text .feature f) =&gt; any ) ; only used in framework syntax
+; EXTENSION-POINT is only used in framework syntax
+EXTENSION-POINT&lt;f&gt; = ( * (quality-name .feature f) =&gt; any )
+quality-name = text .regexp "([a-z][a-z0-9]*:)?[a-z$][A-Za-z$0-9]*"
 
-sdf-pointer = text ; .regexp curie-regexp -- TO DO!
+; rough CURIE or JSON Pointer syntax:
+global-sdf-pointer = text .regexp ".*[:#].*"
+
+optional-comment = (
+ ? $comment: text       ; source code comments only, no semantics
+)
+
+modified-date-time = text .abnf modified-dt-abnf
+modified-dt-abnf = "modified-dt" .det rfc3339z
+
+; RFC 3339 sans time-numoffset, slightly condensed
+rfc3339z = '
+   date-fullyear   = 4DIGIT
+   date-month      = 2DIGIT  ; 01-12
+   date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
+                             ; month/year
+   time-hour       = 2DIGIT  ; 00-23
+   time-minute     = 2DIGIT  ; 00-59
+   time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap sec
+                             ; rules
+   time-secfrac    = "." 1*DIGIT
+   DIGIT           =  %x30-39 ; 0-9
+
+   partial-time    = time-hour ":" time-minute ":" time-second
+                     [time-secfrac]
+   full-date       = date-fullyear "-" date-month "-" date-mday
+
+   modified-dt     = full-date ["T" partial-time "Z"]
+'
 </pre>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
@@ -1506,7 +1588,7 @@ sdf-pointer = text ; .regexp curie-regexp -- TO DO!
             <tr>
               <td class="text-left" rowspan="1" colspan="1">sdf-mapping+json</td>
               <td class="text-left" rowspan="1" colspan="1">application/sdf-mapping+json</td>
-              <td class="text-left" rowspan="1" colspan="1">RFC XXXX, <a href="#media-type" class="xref">Section 4.1</a>
+              <td class="text-left" rowspan="1" colspan="1">RFC XXXX, <a href="#media-type" class="auto internal xref">Section 4.1</a>
 </td>
             </tr>
           </tbody>
@@ -1541,7 +1623,7 @@ sdf-pointer = text ; .regexp curie-regexp -- TO DO!
           <dd class="break"></dd>
 <dt id="section-4.1-4.11">Security considerations:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-4.12">
-            <p id="section-4.1-4.12.1"><a href="#seccons" class="xref">Section 5</a> of RFC XXXX<a href="#section-4.1-4.12.1" class="pilcrow">¶</a></p>
+            <p id="section-4.1-4.12.1"><a href="#seccons" class="auto internal xref">Section 5</a> of RFC XXXX<a href="#section-4.1-4.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-4.13">Interoperability considerations:</dt>
@@ -1551,18 +1633,19 @@ sdf-pointer = text ; .regexp curie-regexp -- TO DO!
           <dd class="break"></dd>
 <dt id="section-4.1-4.15">Published specification:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-4.16">
-            <p id="section-4.1-4.16.1"><a href="#media-type" class="xref">Section 4.1</a> of RFC XXXX<a href="#section-4.1-4.16.1" class="pilcrow">¶</a></p>
+            <p id="section-4.1-4.16.1"><a href="#media-type" class="auto internal xref">Section 4.1</a> of RFC XXXX<a href="#section-4.1-4.16.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-4.17">Applications that use this media type:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-4.18">
-            <p id="section-4.1-4.18.1">Tools for data and interaction modeling in the Internet of Things<a href="#section-4.1-4.18.1" class="pilcrow">¶</a></p>
+            <p id="section-4.1-4.18.1">Tools for data and interaction modeling that describes Things, i.e.,
+ physical objects that are available for interaction over a network<a href="#section-4.1-4.18.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-4.19">Fragment identifier considerations:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-4.20">
             <p id="section-4.1-4.20.1">A JSON Pointer fragment identifier may be used, as defined in
-<span><a href="https://rfc-editor.org/rfc/rfc6901#section-6" class="relref">Section 6</a> of [<a href="#RFC6901" class="xref">RFC6901</a>]</span>.<a href="#section-4.1-4.20.1" class="pilcrow">¶</a></p>
+<span><a href="https://rfc-editor.org/rfc/rfc6901#section-6" class="relref">Section 6</a> of [<a href="#RFC6901" class="cite xref">RFC6901</a>]</span>.<a href="#section-4.1-4.20.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-4.21">Person &amp; email address to contact for further information:</dt>
@@ -1599,7 +1682,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-4.1-4.22
         <h3 id="name-registries">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-registries" class="section-name selfRef">Registries</a>
         </h3>
-<p id="section-4.2-1">(TBD: After future additions, check if we need any.)<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">(TBD: After any future additions, check if we need any.)<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1609,26 +1692,34 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-4.1-4.22
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">Some wider issues are discussed in <span>[<a href="#RFC8576" class="xref">RFC8576</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">Some wider issues are discussed in <span>[<a href="#RFC8576" class="cite xref">RFC8576</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">(Specifics: TBD.)<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-6">
       <h2 id="name-references">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-6.1">
         <h3 id="name-normative-references">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="BCP14">[BCP14]</dt>
+        <dd>
+<div class="refInstance">Best Current Practice 14, <span>&lt;<a href="https://www.rfc-editor.org/info/bcp14">https://www.rfc-editor.org/info/bcp14</a>&gt;</span>.<br><span>At the time of writing, this BCP comprises the following:</span>
+</div>
+<div class="refInstance" id="RFC2119">
+            <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </div>
+<div class="refInstance" id="RFC8174">
+            <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </div>
+</dd>
+<dd class="break"></dd>
 <dt id="I-D.ietf-asdf-sdf">[I-D.ietf-asdf-sdf]</dt>
         <dd>
-<span class="refAuthor">Koster, M.</span> and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-10</span>, <time datetime="2022-01-16" class="refDate">16 January 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-10">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-10</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC2119">[RFC2119]</dt>
-        <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-23</span>, <time datetime="2025-03-17" class="refDate">17 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
@@ -1638,35 +1729,39 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-4.1-4.22
         <dd>
 <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">J. Snell</span>, <span class="refTitle">"JSON Merge Patch"</span>, <span class="seriesInfo">RFC 7396</span>, <span class="seriesInfo">DOI 10.17487/RFC7396</span>, <time datetime="2014-10" class="refDate">October 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7396">https://www.rfc-editor.org/rfc/rfc7396</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8174">[RFC8174]</dt>
-        <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8610">[RFC8610]</dt>
       <dd>
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-6.2">
         <h3 id="name-informative-references">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC8576">[RFC8576]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Garcia-Morchon, O.</span>, <span class="refAuthor">Kumar, S.</span>, and <span class="refAuthor">M. Sethi</span>, <span class="refTitle">"Internet of Things (IoT) Security: State of the Art and Challenges"</span>, <span class="seriesInfo">RFC 8576</span>, <span class="seriesInfo">DOI 10.17487/RFC8576</span>, <time datetime="2019-04" class="refDate">April 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8576">https://www.rfc-editor.org/rfc/rfc8576</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.wot-thing-description11">[W3C.wot-thing-description11]</dt>
+      <dd>
+<span class="refTitle">"Web of Things (WoT) Thing Description 1.1"</span>, <span class="seriesInfo">W3C REC wot-thing-description11</span>, <span class="seriesInfo">W3C wot-thing-description11</span>, <span>&lt;<a href="https://www.w3.org/TR/wot-thing-description11/">https://www.w3.org/TR/wot-thing-description11/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
+</div>
 <div id="acknowledgements">
 <section id="appendix-A">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
 <p id="appendix-A-1">This draft is based on discussions in the Thing-to-Thing Research
-Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="xref">Section 2.1</a> was provided by <span class="contact-name">Ari Keränen</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="auto internal xref">Section 2.1</a> was provided by <span class="contact-name">Ari Keränen</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
@@ -1694,6 +1789,7 @@ Group (T2TRG) and the SDF working group.  Input for <a href="#example1" class="x
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Jan Romann</span></div>
 <div dir="auto" class="left"><span class="org">Universität Bremen</span></div>
+<div dir="auto" class="left"><span class="country-name">Germany</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:jan.romann@uni-bremen.de" class="email">jan.romann@uni-bremen.de</a>
