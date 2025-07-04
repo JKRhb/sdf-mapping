@@ -1343,20 +1343,24 @@ meta-level higher).</span><a href="#section-2.1-1" class="pilcrow">¶</a></p>
 (as defined in Section 10 of <span>[<a href="#W3C.wot-thing-description11" class="cite xref">W3C.wot-thing-description11</a>]</span>)
 into an SDF model plus a mapping file to catch Thing Model attributes
 that don't currently have SDF qualities defined (namely, <code>titles</code> and
-<code>descriptions</code> members used for internationalization).
-A second mapping file captures information that is instance-specific,
-in this case a <code>forms</code> member that binds the <code>status</code> property to a
-concrete CoAP resource.
+<code>descriptions</code> members used for internationalization).<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">A second mapping file is more experimental in that it captures
+information that is actually instance-specific,
+in this case a <code>forms</code> member that binds the <code>status</code> property to an
+instance-specific CoAP resource.
 <span class="cref" id="td-note"><br>
-Namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="pilcrow">¶</a></p>
+Namespaces are all wrong in this example.</span><a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">The form really should be part of the class level; defining the entire
+form instead of just the link in the instance information is a
+symptom of not yet getting the class/instance boundary right.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-2.1">
-            <p id="section-2.2-2.1.1">The input: WoT Thing Model<a href="#section-2.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-4.1">
+            <p id="section-2.2-4.1.1">The input: WoT Thing Model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-input-wot-thing-model"></span><div id="code-wot-input">
 <figure id="figure-2">
-          <div class="lang-json sourcecode" id="section-2.2-3.1">
+          <div class="lang-json sourcecode" id="section-2.2-5.1">
 <pre>
 {
     "@context": "https://www.w3.org/2022/wot/td/v1.1",
@@ -1390,13 +1394,13 @@ Namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-4.1">
-            <p id="section-2.2-4.1.1">The output: SDF model<a href="#section-2.2-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-6.1">
+            <p id="section-2.2-6.1.1">The output: SDF model<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-1-sdf-model"></span><div id="code-wot-output1">
 <figure id="figure-3">
-          <div class="lang-json sourcecode" id="section-2.2-5.1">
+          <div class="lang-json sourcecode" id="section-2.2-7.1">
 <pre>
 {
   "info": {
@@ -1426,13 +1430,13 @@ Namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-6.1">
-            <p id="section-2.2-6.1.1">The other output: SDF mapping file for class information<a href="#section-2.2-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-8.1">
+            <p id="section-2.2-8.1.1">The other output: SDF mapping file for class information<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-2-sdf-mapping-file"></span><div id="code-wot-output2">
 <figure id="figure-4">
-          <div class="lang-json sourcecode" id="section-2.2-7.1">
+          <div class="lang-json sourcecode" id="section-2.2-9.1">
 <pre>
 {
   "info": {
@@ -1464,13 +1468,13 @@ Namespaces are all wrong in this example.</span><a href="#section-2.2-1" class="
           </figcaption></figure>
 </div>
 <ul class="normal">
-<li class="normal" id="section-2.2-8.1">
-            <p id="section-2.2-8.1.1">A third output: SDF mapping file for Protocol Bindings<a href="#section-2.2-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-2.2-10.1">
+            <p id="section-2.2-10.1.1">A third output: SDF mapping file for Protocol Bindings<a href="#section-2.2-10.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-output-3-sdf-mapping-file-f"></span><div id="code-wot-output3">
 <figure id="figure-5">
-          <div class="lang-json sourcecode" id="section-2.2-9.1">
+          <div class="lang-json sourcecode" id="section-2.2-11.1">
 <pre>
 {
   "info": {

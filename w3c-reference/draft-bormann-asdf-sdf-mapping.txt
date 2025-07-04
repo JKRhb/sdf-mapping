@@ -216,8 +216,8 @@ Internet-Draft                 SDF Mapping                     July 2025
    Model (as defined in Section 10 of [W3C.wot-thing-description11])
    into an SDF model plus a mapping file to catch Thing Model attributes
    that don't currently have SDF qualities defined (namely, titles and
-   descriptions members used for internationalization).  A second
-   mapping file captures information that is instance-specific, in this
+   descriptions members used for internationalization).
+
 
 
 
@@ -226,9 +226,15 @@ Bormann & Romann         Expires 5 January 2026                 [Page 4]
 Internet-Draft                 SDF Mapping                     July 2025
 
 
-   case a forms member that binds the status property to a concrete CoAP
+   A second mapping file is more experimental in that it captures
+   information that is actually instance-specific, in this case a forms
+   member that binds the status property to an instance-specific CoAP
    resource.
    // Namespaces are all wrong in this example.
+
+   The form really should be part of the class level; defining the
+   entire form instead of just the link in the instance information is a
+   symptom of not yet getting the class/instance boundary right.
 
    *  The input: WoT Thing Model
 
@@ -261,12 +267,6 @@ Internet-Draft                 SDF Mapping                     July 2025
                       Figure 2: Input: WoT Thing Model
 
    *  The output: SDF model
-
-
-
-
-
-
 
 
 
