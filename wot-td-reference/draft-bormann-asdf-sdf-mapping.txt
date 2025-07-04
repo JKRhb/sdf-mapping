@@ -212,10 +212,10 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 2.2.  Example Model 2 (ecosystem: W3C WoT)
 
-   This example shows a translation of a hypothetical W3C WoT (as
-   defined in Section 10 of [W3C.wot-thing-description11]) into an SDF
-   model plus a mapping file to catch Thing Model attributes that don't
-   currently have SDF qualities defined.
+   This example shows a translation of a hypothetical W3C WoT Thing
+   Model (as defined in Section 10 of [W3C.wot-thing-description11])
+   into an SDF model plus a mapping file to catch Thing Model attributes
+   that don't currently have SDF qualities defined.
    // The example probably would be more useful with, say, protocol
    // bindings.  This is left for a future version of this example, and/
 
