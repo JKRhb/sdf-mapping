@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 27 December 2025                          Hochschule Emden/Leer
-                                                            25 June 2025
+Expires: 5 January 2026                            Hochschule Emden/Leer
+                                                             4 July 2025
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 1]
+Bormann & Romann         Expires 5 January 2026                 [Page 1]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,7 +68,7 @@ Internet-Draft                 SDF Mapping                     June 2025
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 December 2025.
+   This Internet-Draft will expire on 5 January 2026.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 2]
+Bormann & Romann         Expires 5 January 2026                 [Page 2]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 3]
+Bormann & Romann         Expires 5 January 2026                 [Page 3]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 2.1.  Example Model 1 (ecosystem: IPSO/OMA)
@@ -221,9 +221,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 4]
+Bormann & Romann         Expires 5 January 2026                 [Page 4]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    // Thing Models into SDF.  (There is also the separate requirement to
@@ -277,9 +277,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 5]
+Bormann & Romann         Expires 5 January 2026                 [Page 5]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    {
@@ -333,9 +333,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 6]
+Bormann & Romann         Expires 5 January 2026                 [Page 6]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    {
@@ -389,9 +389,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 7]
+Bormann & Romann         Expires 5 January 2026                 [Page 7]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    ; we can't really be much more specific here:
@@ -445,9 +445,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 8]
+Bormann & Romann         Expires 5 January 2026                 [Page 8]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
       DIGIT           =  %x30-39 ; 0-9
@@ -501,16 +501,16 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025                [Page 9]
+Bormann & Romann         Expires 5 January 2026                 [Page 9]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    {
      "info": {
        "title": "Lamp Thing Model"
      },
-     "namespaces": {
+     "namespace": {
        "wot": "http://www.w3.org/ns/td"
      },
      "defaultNamespace": "wot",
@@ -557,9 +557,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025               [Page 10]
+Bormann & Romann         Expires 5 January 2026                [Page 10]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 5.  IANA Considerations
@@ -613,9 +613,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025               [Page 11]
+Bormann & Romann         Expires 5 January 2026                [Page 11]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
 6.  Security Considerations
@@ -669,9 +669,9 @@ Internet-Draft                 SDF Mapping                     June 2025
 
 
 
-Bormann & Romann        Expires 27 December 2025               [Page 12]
+Bormann & Romann         Expires 5 January 2026                [Page 12]
 
-Internet-Draft                 SDF Mapping                     June 2025
+Internet-Draft                 SDF Mapping                     July 2025
 
 
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
@@ -725,4 +725,4 @@ Authors' Addresses
 
 
 
-Bormann & Romann        Expires 27 December 2025               [Page 13]
+Bormann & Romann         Expires 5 January 2026                [Page 13]
