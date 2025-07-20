@@ -695,8 +695,8 @@ Internet-Draft                 SDF Mapping                     July 2025
        the processor performs the following steps:
 
        1.  If the originalSdfModel quality is not present in the info
-           block, the processor MAY create it with the URI as of the SDF
-           model that is currently being augmented as its value.
+           block, the processor adds it with the URI as of the SDF model
+           that is currently being augmented as its value.
 
        2.  The processor creates the augmentationLog quality with an
            array containing the URI of the current mapping file as its
