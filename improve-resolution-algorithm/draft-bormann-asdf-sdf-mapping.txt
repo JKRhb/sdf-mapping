@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 12 January 2026                              Universität Bremen
-                                                            11 July 2025
+Expires: 21 January 2026                              Universität Bremen
+                                                            20 July 2025
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 1]
+Bormann & Romann         Expires 21 January 2026                [Page 1]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -68,7 +68,7 @@ Internet-Draft                 SDF Mapping                     July 2025
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 January 2026.
+   This Internet-Draft will expire on 21 January 2026.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 2]
+Bormann & Romann         Expires 21 January 2026                [Page 2]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -165,7 +165,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 3]
+Bormann & Romann         Expires 21 January 2026                [Page 3]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -221,7 +221,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 4]
+Bormann & Romann         Expires 21 January 2026                [Page 4]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -277,7 +277,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 5]
+Bormann & Romann         Expires 21 January 2026                [Page 5]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -333,7 +333,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 6]
+Bormann & Romann         Expires 21 January 2026                [Page 6]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -389,7 +389,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 7]
+Bormann & Romann         Expires 21 January 2026                [Page 7]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -445,7 +445,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 8]
+Bormann & Romann         Expires 21 January 2026                [Page 8]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -501,7 +501,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026                [Page 9]
+Bormann & Romann         Expires 21 January 2026                [Page 9]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -536,12 +536,13 @@ Internet-Draft                 SDF Mapping                     July 2025
    the mapping file's map object points to a location that already
    exists within the SDF model.  To perform the augmentation, a
    processor needs to create a copy of the original SDF model.  It then
-   iterates over all entries within the mapping file's map object.
-   During each iteration, the processor first obtains a reference to the
-   target referred to by the JSON pointer contained an entry's key.
-   This reference is then used as the Target argument of the JSON Merge
-   Patch algorithm [RFC7396] and the entry's value as the Patch
-   argument.
+   iterates over all entries within the mapping file's map object [in an
+   order to be specified; probably lexicographical].  During each
+   iteration, the processor first obtains a reference to the target
+   referred to by the JSON pointer contained an entry's key.  This
+   reference is then used as the Target argument of the JSON Merge Patch
+   algorithm [RFC7396] and the entry's value as the Patch argument; the
+   target is replaced with the result of the merge-patch.
 
    Once the iteration has finished, the processor returns the resulting
    augmented SDF model.  Should the resolution of a JSON pointer or an
@@ -556,8 +557,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-
-Bormann & Romann         Expires 12 January 2026               [Page 10]
+Bormann & Romann         Expires 21 January 2026               [Page 10]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -613,7 +613,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 11]
+Bormann & Romann         Expires 21 January 2026               [Page 11]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -669,7 +669,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 12]
+Bormann & Romann         Expires 21 January 2026               [Page 12]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -725,7 +725,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 13]
+Bormann & Romann         Expires 21 January 2026               [Page 13]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -781,7 +781,7 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 14]
+Bormann & Romann         Expires 21 January 2026               [Page 14]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -837,7 +837,7 @@ Authors' Addresses
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 15]
+Bormann & Romann         Expires 21 January 2026               [Page 15]
 
 Internet-Draft                 SDF Mapping                     July 2025
 
@@ -893,4 +893,4 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-Bormann & Romann         Expires 12 January 2026               [Page 16]
+Bormann & Romann         Expires 21 January 2026               [Page 16]
