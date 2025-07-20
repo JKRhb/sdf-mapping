@@ -96,11 +96,11 @@ Table of Contents
      4.1.  Logging Augmentation  . . . . . . . . . . . . . . . . . .  13
    5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      5.1.  Media Type  . . . . . . . . . . . . . . . . . . . . . . .  14
-     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  15
+     5.2.  Registries  . . . . . . . . . . . . . . . . . . . . . . .  14
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  16
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  15
    List of Figures . . . . . . . . . . . . . . . . . . . . . . . . .  16
    List of Tables  . . . . . . . . . . . . . . . . . . . . . . . . .  16
    Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -680,10 +680,10 @@ Internet-Draft                 SDF Mapping                     July 2025
    other SDF model, it may be necessary to trace the provenance of the
    information that flowed into it, e.g., in the info block.  For this
    purpose, a new quality called augmentationLog is introduced that
-   contains an array of URIs pointing to the mapping files that been
-   used to augment the original SDF file (which can also be indicated
-   via the originalSdfModel quality).  These additional qualities allow
-   for reproducing the augmentation process.
+   contains an array of URIs pointing to the mapping files that have
+   been used to augment the original SDF file (which can also be
+   indicated via the originalSdfModel quality).  These additional
+   qualities allow for reproducing the augmentation process.
 
    For logging while performing an augmentation, the processor has to
    perform the following steps:
@@ -695,40 +695,20 @@ Internet-Draft                 SDF Mapping                     July 2025
        the processor performs the following steps:
 
        1.  If the originalSdfModel quality is not present in the info
-           block, the processor adds it with the URI as of the SDF model
-           that is currently being augmented as its value.
+           block, the processor adds it with a URI that can be used to
+           access the SDF model that is currently being augmented as its
+           value.
 
        2.  The processor creates the augmentationLog quality with an
-           array containing the URI of the current mapping file as its
-           sole item.
+           array containing URIs that can be used to access the current
+           mapping file as its sole item.
 
    3.  Otherwise, if augmentationLog does not contain an array, stop and
        throw an error.
 
-   4.  Otherwise, the processor adds the URI of the current mapping file
-       to the array of the augmentationLog quality.
-
-
-   // A convention for "logging" the augmentation steps that went into
-   // an augmented model needs to be further fleshed out.  (An array in
-   // the info block that receives additions from a mapping file using
-   // the "-" pointer syntax may be a good receptacle for receiving
-   // information about multiple augmentations.)
-
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 13]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
+   4.  Otherwise, the processor adds a URI that can be used to access
+       the current mapping file to the array of the augmentationLog
+       quality.
 
    {
      "info": {
@@ -740,6 +720,15 @@ Internet-Draft                 SDF Mapping                     July 2025
        "originalSdfModel": "https://example.org/original-sdf-model"
      }
    }
+
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 13]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
        Figure 8: An augmented SDF model with an augmentation log and
                information regarding the original SDF model.
@@ -778,14 +767,6 @@ Internet-Draft                 SDF Mapping                     July 2025
    Fragment identifier considerations:  A JSON Pointer fragment
       identifier may be used, as defined in Section 6 of [RFC6901].
    Person & email address to contact for further information:  ASDF WG
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 14]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
       mailing list (asdf@ietf.org), or IETF Applications and Real-Time
       Area (art@ietf.org)
    Intended usage:  COMMON
@@ -796,6 +777,14 @@ Internet-Draft                 SDF Mapping                     July 2025
 5.2.  Registries
 
    (TBD: After any future additions, check if we need any.)
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 14]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
 6.  Security Considerations
 
@@ -833,15 +822,6 @@ Internet-Draft                 SDF Mapping                     July 2025
               DOI 10.17487/RFC6901, April 2013,
               <https://www.rfc-editor.org/rfc/rfc6901>.
 
-
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 15]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    [RFC7396]  Hoffman, P. and J. Snell, "JSON Merge Patch", RFC 7396,
               DOI 10.17487/RFC7396, October 2014,
               <https://www.rfc-editor.org/rfc/rfc7396>.
@@ -853,6 +833,14 @@ Internet-Draft                 SDF Mapping                     July 2025
               June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
 
 7.2.  Informative References
+
+
+
+
+Bormann & Romann         Expires 21 January 2026               [Page 15]
+
+Internet-Draft                 SDF Mapping                     July 2025
+
 
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
               Things (IoT) Security: State of the Art and Challenges",
@@ -887,17 +875,6 @@ Acknowledgements
 
 Authors' Addresses
 
-
-
-
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 16]
-
-Internet-Draft                 SDF Mapping                     July 2025
-
-
    Carsten Bormann (editor)
    Universität Bremen TZI
    Postfach 330440
@@ -916,37 +893,4 @@ Internet-Draft                 SDF Mapping                     July 2025
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Bormann & Romann         Expires 21 January 2026               [Page 17]
+Bormann & Romann         Expires 21 January 2026               [Page 16]
