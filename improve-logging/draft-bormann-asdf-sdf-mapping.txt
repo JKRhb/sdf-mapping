@@ -689,7 +689,7 @@ Internet-Draft                 SDF Mapping                     July 2025
    perform the following steps:
 
    1.  If the info block is not present in the model that is being
-       augmented, the processor creates one.
+       augmented, the processor creates it.
 
    2.  If the info does not contain an augmentationLog quality, the
        processor performs the following steps:
