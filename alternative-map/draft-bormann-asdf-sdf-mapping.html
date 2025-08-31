@@ -1057,11 +1057,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SDF Mapping</td>
-<td class="right">July 2025</td>
+<td class="right">August 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Bormann &amp; Romann</td>
-<td class="center">Expires 26 January 2026</td>
+<td class="center">Expires 4 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1074,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-bormann-asdf-sdf-mapping-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-25" class="published">25 July 2025</time>
+<time datetime="2025-08-31" class="published">31 August 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-26">26 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-03-04">4 March 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1145,7 +1145,7 @@ augmentation.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1263,6 +1263,11 @@ information that is specific to its use in a particular ecosystem or
 application.
 SDF mapping files provide a mechanism to represent this
 augmentation.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3"><span class="cref" id="naming-note">In this revision, we have renamed the <code>map</code> quality to <code>patches</code> since
+the underlying data structure changed from an object to an array.
+For this reason, we are also considering changing the name "Mapping File"
+to something like "Augmentation File" to reflect the fact that the file
+does not actually contain a <em>map</em> for describing the augmentation anymore.</span><a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="terminology-and-conventions">
 <section id="section-1.1">
         <h3 id="name-terminology-and-conventions">
@@ -1286,13 +1291,14 @@ appear in all capitals, as shown here.<a href="#section-1.1-3" class="pilcrow">�
       </h2>
 <p id="section-2-1">An SDF mapping file provides augmentation information for one or more
 SDF models.
-Its main contents is a map from SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) to a set of qualities.<a href="#section-2-1" class="pilcrow">¶</a></p>
+Its main contents are an array of <code>patches</code> that are applied using SDF name references (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24#section-4.3" class="relref">Section 4.3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) as the respective target.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">When processing the mapping file together with one or more SDF
-models, these qualities are added to the SDF model at the
+models, the qualities from the array entries are added to the SDF model at the
 referenced name, as in a merge-patch operation <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span>.
-Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
+Note that this is somewhat similar to the way <code>sdfRef</code> (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>) works, but in a
 mapping file the arrows point in the inverse direction (from the
 augmenter to the augmented).<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">Note that the order of the patch application is that of the elements within the array (which is deterministic in contrast to the entries of an object).<a href="#section-2-3" class="pilcrow">¶</a></p>
 <div id="example1">
 <section id="section-2.1">
         <h3 id="name-example-model-1-ecosystem-i">
@@ -1306,7 +1312,7 @@ Note that this example uses namespaces to identify elements of the
 referenced specification(s), but has un-namespaced quality names.
 These two kinds of namespaces are unrelated in SDF, and a more
 robust example may need to make use of Quality Name Prefixes
-as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
+as defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24#section-2.3.3-3" class="relref">Section 2.3.3-3</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span> (independent of a potential
 feature to add namespace references to definitions that are not
 intended to go into the default namespace — these are SDF
 definition namespaces and not quality namespaces, which are one
@@ -1540,10 +1546,8 @@ symptom of not yet getting the class/instance boundary right.<a href="#section-2
 <p id="section-3-1">An SDF mapping file has three optional components that are taken
 unchanged from SDF: The info block, the namespace declaration, and the
 default namespace.
-The mandatory fourth component, the "map", contains the mappings from
-an SDF name reference (usually a namespace and a JSON pointer) to a
-nested map providing a set of qualities to be merged in at the site
-identified in the name reference.<a href="#section-3-1" class="pilcrow">¶</a></p>
+The mandatory fourth component, the <code>patches</code>, contains the list of augmentations that are supposed to be applied to the target model,
+using an SDF name reference (usually a namespace and a JSON pointer) as the augmentation <code>target</code> to which a specified quality is to be applied as the <code>patch</code>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2"><a href="#mapping-cddl" class="auto internal xref">Figure 6</a> describes the syntax of SDF mapping files using CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <span id="name-cddl-definition-of-sdf-mapp"></span><div id="mapping-cddl">
 <figure id="figure-6">
@@ -1556,7 +1560,12 @@ sdf-mapping = {
  ? info: sdfinfo
  ? namespace: named&lt;text&gt;
  ? defaultNamespace: text
- map: { * global-sdf-pointer =&gt; additionalqualities}
+ patches: [ * patches ]
+}
+
+patch = {
+  target: global-sdf-pointer,
+  value: additionalqualities,
 }
 
 ; we can't really be much more specific here:
@@ -1621,11 +1630,11 @@ rfc3339z = '
 <a href="#name-cddl-definition-of-sdf-mapp" class="selfRef">CDDL definition of SDF mapping file</a>
         </figcaption></figure>
 </div>
-<p id="section-3-4">The JSON pointer that is used on the left-hand side of the map can
+<p id="section-3-4">The JSON pointer that is used a the <code>target</code> can
 point to a JSON map in the SDF model to be augmented by adding or
 replacing map entries.
 If necessary, the JSON map is created at the position indicated with
-the contents of right-hand side of the map <span class="cref" id="example">(add examples)</span>.
+the contents of the <code>patch</code> <span class="cref" id="example">(add examples)</span>.
 Alternatively, the JSON pointer can point to an array (also possibly
 created if not existing before) and add an element to that array by
 using the "<code>‑</code>" syntax introduced in the penultimate paragraph of
@@ -1648,7 +1657,7 @@ information.<a href="#section-4-1" class="pilcrow">¶</a></p>
         <p id="section-4-2.1">Note that it might be necessary to specify an augmentation mechanism for instance descriptions as well at a later point in time, once it has been decided what the instance description format might look like and whether such a format is needed.<a href="#section-4-2.1" class="pilcrow">¶</a></p>
 </aside>
 <p id="section-4-3">The augmentation mechanism is related to the resolution mechanism
-defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
+defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24#section-4.4" class="relref">Section 4.4</a> of [<a href="#I-D.ietf-asdf-sdf" class="cite xref">I-D.ietf-asdf-sdf</a>]</span>, but fundamentally different:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">Instead of a model file reaching out to other model files and
 integrating aspects into itself via <code>sdfRef</code> (<em>pull</em> approach), the
 mapping file <em>pushes</em> information into a new copy of a specific given
@@ -1656,34 +1665,21 @@ SDF model.
 The original SDF model does not need to know which mapping files it
 will be used with and can be used with several such mapping files
 independently of each other.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every JSON pointer within the keys of the mapping file's <code>map</code> object points to a location that already exists within the SDF model.
+<p id="section-4-5">An augmented SDF model is produced from two inputs: An SDF model and a compatible mapping file, i.e. every <code>target</code> JSON pointer within elements of the  <code>patches</code> array points to a location that already exists within the SDF model or has been created by a previous augmentation step.
 To perform the augmentation, a processor needs to create a copy of the original SDF model.
-It then iterates over all entries within the mapping file's <code>map</code> object [in an order to be specified; probably lexicographical].
-During each iteration, the processor first obtains a reference to the target referred to by the JSON pointer contained an entry's key.
-This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's value as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
+It then iterates over all entries within the mapping file's <code>patches</code> array.
+During each iteration, the processor first obtains a reference to the target referred to by the <code>target</code> JSON pointer.
+This reference is then used as the <code>Target</code> argument of the JSON Merge Patch algorithm <span>[<a href="#RFC7396" class="cite xref">RFC7396</a>]</span> and the entry's <code>patch</code> quality as the <code>Patch</code> argument; the target is replaced with the result of the merge-patch.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Once the iteration has finished, the processor returns the resulting augmented SDF model.
 Should the resolution of a JSON pointer or an application of the JSON Merge Patch algorithm fail, an error is thrown instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<aside id="section-4-7">
-        <p id="section-4-7.1">Note that, in contrast to an array, the entries of a JSON object are considered unordered, which means that the sequence in which the <code>map</code> entries are applied is implementation-dependent.
-For this reason, we need to make sure that the contents of mapping
-files can be applied independently of each other.
-(We need to understand the onus in
-ensuring this that is put on author of a mapping file.)<a href="#section-4-7.1" class="pilcrow">¶</a></p>
-<p id="section-4-7.2">The problem can be "avoided" by changing the data structure used by the <code>map</code> quality to an array of objects to ensure a deterministic application order.
-This would essentially put most of the onus on the author of a mapping
-file to get any order dependencies right.
-More preferable would be to ensure the entries in the mapping file can
-be applied independently and in any order.
-More discussion and implementation experience is required.<a href="#section-4-7.2" class="pilcrow">¶</a></p>
-</aside>
-<p id="section-4-8">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
+<p id="section-4-7">An example for an augmented SDF model can be seen in <a href="#code-augmented-sdf-model" class="auto internal xref">Figure 7</a>.
 This is the result of applying the WoT-specific mapping file from <a href="#code-wot-output2" class="auto internal xref">Figure 4</a> to the SDF model shown in <a href="#code-wot-output1" class="auto internal xref">Figure 3</a>.
 This augmented SDF model is one step away from being converted to a WoT Thing Model or Thing Description,
 which requires some information that cannot be provided in an SDF
-model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-8" class="pilcrow">¶</a></p>
+model that is limited to the vocabulary defined in the SDF base specification.<a href="#section-4-7" class="pilcrow">¶</a></p>
 <span id="name-an-sdf-model-that-has-been-"></span><div id="code-augmented-sdf-model">
 <figure id="figure-7">
-        <div class="lang-sdf sourcecode" id="section-4-9.1">
+        <div class="lang-sdf sourcecode" id="section-4-8.1">
 <pre>{
   "info": {
     "title": "Lamp Thing Model"
@@ -1719,8 +1715,8 @@ model that is limited to the vocabulary defined in the SDF base specification.<a
 <a href="#name-an-sdf-model-that-has-been-" class="selfRef">An SDF model that has been augmented with WoT-specific vocabulary.</a>
         </figcaption></figure>
 </div>
-<aside id="section-4-10">
-        <p id="section-4-10.1">Since the pair of an SDF model and a mapping file is equivalent in
+<aside id="section-4-9">
+        <p id="section-4-9.1">Since the pair of an SDF model and a mapping file is equivalent in
 semantics to the augmented model created from the two, there is no
 fundamental difference between specifying aspects in the SDF model or
 leaving them in a mapping file.
@@ -1730,7 +1726,7 @@ Therefore, developing the mapping between SDF and an ecosystem
 requires careful consideration which of the features should be available
 to other ecosystems and therefore should best be part of the common
 SDF model, and which are best handled in a mapping file specific to the
-ecosystem.<a href="#section-4-10.1" class="pilcrow">¶</a></p>
+ecosystem.<a href="#section-4-9.1" class="pilcrow">¶</a></p>
 </aside>
 <div id="logging-augmentation">
 <section id="section-4.1">
@@ -1960,7 +1956,7 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.1-4.22
 <dd class="break"></dd>
 <dt id="I-D.ietf-asdf-sdf">[I-D.ietf-asdf-sdf]</dt>
         <dd>
-<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-23</span>, <time datetime="2025-03-17" class="refDate">17 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-23</a>&gt;</span>. </dd>
+<span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"Semantic Definition Format (SDF) for Data and Interactions of Things"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-asdf-sdf-24</span>, <time datetime="2025-07-27" class="refDate">27 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24">https://datatracker.ietf.org/doc/html/draft-ietf-asdf-sdf-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
