@@ -5,8 +5,8 @@
 ASDF                                                     C. Bormann, Ed.
 Internet-Draft                                    Universität Bremen TZI
 Intended status: Standards Track                               J. Romann
-Expires: 4 March 2026                                 Universität Bremen
-                                                          31 August 2025
+Expires: 22 August 2026                               Universität Bremen
+                                                        18 February 2026
 
 
             Semantic Definition Format (SDF): Mapping files
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 1]
+Bormann & Romann         Expires 22 August 2026                 [Page 1]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,11 +68,11 @@ Internet-Draft                 SDF Mapping                   August 2025
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 March 2026.
+   This Internet-Draft will expire on 22 August 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 2]
+Bormann & Romann         Expires 22 August 2026                 [Page 2]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
 1.  Introduction
@@ -165,13 +165,13 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 3]
+Bormann & Romann         Expires 22 August 2026                 [Page 3]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    When processing the mapping file together with one or more SDF
-   models, the qualities from the array entries are added to the SDF
+   models, the qualities from the array elements are added to the SDF
    model at the referenced name, as in a merge-patch operation
    [RFC7396].  Note that this is somewhat similar to the way sdfRef
    (Section 4.4 of [I-D.ietf-asdf-sdf]) works, but in a mapping file the
@@ -221,9 +221,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 4]
+Bormann & Romann         Expires 22 August 2026                 [Page 4]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    {
@@ -277,9 +277,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 5]
+Bormann & Romann         Expires 22 August 2026                 [Page 5]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    The form really should be part of the class level; defining the
@@ -333,9 +333,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 6]
+Bormann & Romann         Expires 22 August 2026                 [Page 6]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    {
@@ -389,9 +389,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 7]
+Bormann & Romann         Expires 22 August 2026                 [Page 7]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    {
@@ -445,9 +445,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 8]
+Bormann & Romann         Expires 22 August 2026                 [Page 8]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    {
@@ -501,9 +501,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                  [Page 9]
+Bormann & Romann         Expires 22 August 2026                 [Page 9]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
      target: global-sdf-pointer,
@@ -557,9 +557,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 10]
+Bormann & Romann         Expires 22 August 2026                [Page 10]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
       time-minute     = 2DIGIT  ; 00-59
@@ -613,9 +613,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 11]
+Bormann & Romann         Expires 22 August 2026                [Page 11]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    An augmented SDF model is produced from two inputs: An SDF model and
@@ -669,9 +669,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 12]
+Bormann & Romann         Expires 22 August 2026                [Page 12]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    {
@@ -725,9 +725,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 13]
+Bormann & Romann         Expires 22 August 2026                [Page 13]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
 4.1.  Logging Augmentation
@@ -781,9 +781,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 14]
+Bormann & Romann         Expires 22 August 2026                [Page 14]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
        Figure 8: An augmented SDF model with an augmentation log and
@@ -837,9 +837,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 15]
+Bormann & Romann         Expires 22 August 2026                [Page 15]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
 6.  Security Considerations
@@ -869,9 +869,9 @@ Internet-Draft                 SDF Mapping                   August 2025
               Koster, M., Bormann, C., and A. Keränen, "Semantic
               Definition Format (SDF) for Data and Interactions of
               Things", Work in Progress, Internet-Draft, draft-ietf-
-              asdf-sdf-24, 27 July 2025,
+              asdf-sdf-25, 13 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-asdf-
-              sdf-24>.
+              sdf-25>.
 
    [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
@@ -893,9 +893,9 @@ Internet-Draft                 SDF Mapping                   August 2025
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 16]
+Bormann & Romann         Expires 22 August 2026                [Page 16]
 
-Internet-Draft                 SDF Mapping                   August 2025
+Internet-Draft                 SDF Mapping                 February 2026
 
 
    [RFC8576]  Garcia-Morchon, O., Kumar, S., and M. Sethi, "Internet of
@@ -949,4 +949,4 @@ Authors' Addresses
 
 
 
-Bormann & Romann          Expires 4 March 2026                 [Page 17]
+Bormann & Romann         Expires 22 August 2026                [Page 17]
